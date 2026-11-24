@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LEXIMIND</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230E7C86'/%3E%3Cpath d='M10 16q7-3 14 1 7-4 14-1v18q-7-3-14 1-7-4-14-1zM24 17v18' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#F2F7F7;--sf:#fff;--tx:#12303A;--mu:#5B7680;--ac:#0E7C86;--on:#fff;--gd:#E3A72F;--ln:#D5E3E5;--rd:#C2413B;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1B20;--sf:#14292F;--tx:#E6F1F2;--mu:#8FAAB1;--ac:#3CC1CC;--on:#08232A;--gd:#F0BC4E;--ln:#23424A;--rd:#F07F78;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C1B20;--sf:#14292F;--tx:#E6F1F2;--mu:#8FAAB1;--ac:#3CC1CC;--on:#08232A;--gd:#F0BC4E;--ln:#23424A;--rd:#F07F78;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1,h2,h3{font-family:Georgia,"Iowan Old Style",serif;margin:.2em 0 .5em;line-height:1.2}
+h2{font-size:1.5rem}h3{font-size:1.6rem;margin:0}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:8px}.top b{font:700 1.25rem Georgia,serif;letter-spacing:.04em}.top small{color:var(--mu)}
+.off{background:var(--gd);color:#241800;text-align:center;padding:4px;font-size:.85rem}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:16px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.grid .card{margin:0}
+.n{font:700 2rem Georgia,serif;color:var(--ac)}.mu{color:var(--mu)}.s{font-size:.85rem}
+.btn{font:inherit;border:1px solid var(--ln);background:var(--sf);color:var(--tx);border-radius:12px;padding:11px 16px;min-height:44px;cursor:pointer}
+.btn.pri{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:600}
+.btn.big{width:100%;font-size:1.1rem;padding:16px}.btn.dn{color:var(--rd)}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gd);outline-offset:2px}
+input,textarea{font:inherit;width:100%;padding:11px 12px;min-height:44px;border-radius:12px;border:1px solid var(--ln);background:var(--bg);color:var(--tx)}
+.row{display:flex;gap:8px;margin:8px 0}.row .btn{flex-shrink:0}.wrap{flex-wrap:wrap}
+.wh{display:flex;justify-content:space-between;align-items:center}
+.def{margin:10px 0 0;padding-left:12px;border-left:3px solid var(--ln)}.def i{color:var(--mu)}
+.bars{display:flex;gap:8px;align-items:flex-end;height:90px;margin-top:8px}
+.bars div{flex:1;text-align:center;font-size:.75rem;color:var(--mu)}.bars span{display:block;background:var(--ac);border-radius:6px 6px 0 0;min-height:3px;margin-bottom:4px}
+.fc{text-align:center;padding:36px 16px;min-height:200px}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.rate .btn{padding:8px 2px;font-size:.9rem}.rate small{display:block;color:var(--mu);font-size:.72rem}
+.it{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--ln)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--sf);border-top:1px solid var(--ln);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;font:inherit;font-size:.78rem;background:none;border:0;color:var(--mu);min-height:48px;cursor:pointer;border-radius:10px}
+nav button.on{color:var(--ac);font-weight:700}
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:12px;display:none;max-width:90%}
+.hero{background:var(--ac);color:var(--on);border-radius:20px;padding:20px;margin:4px 0 12px}.hero small{opacity:.8}.n2{font:700 2.4rem Georgia,serif;line-height:1.1;margin:2px 0 10px}
+.prog{height:8px;border-radius:8px;background:var(--ln);overflow:hidden;margin:6px 0 12px}.prog span{display:block;height:100%;background:var(--gd);border-radius:8px}.hero .prog{background:rgba(255,255,255,.25)}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.mode{font:inherit;text-align:left;background:var(--bg);border:2px solid var(--ln);color:var(--tx);border-radius:14px;padding:12px;cursor:pointer;display:flex;flex-direction:column}.mode span{font-size:.8rem;color:var(--mu)}.mode.on{border-color:var(--ac)}
+.opt{display:block;width:100%;font:inherit;text-align:left;margin:8px 0;padding:14px;border-radius:14px;border:2px solid var(--ln);background:var(--sf);color:var(--tx);cursor:pointer;min-height:52px}.opt.ok{border-color:#2E9E5B;background:rgba(46,158,91,.15)}.opt.no{border-color:var(--rd);background:rgba(194,65,59,.12)}
+.fb{font-size:1.1rem}.okt{color:#2E9E5B}.not{color:var(--rd)}
+nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+@media(min-width:900px){body{padding:0 0 0 200px}nav{top:0;bottom:auto;right:auto;width:200px;flex-direction:column;justify-content:flex-start;border-top:0;border-right:1px solid var(--ln);padding:24px 10px}nav button{flex:none;flex-direction:row;gap:10px;font-size:1rem;padding:0 12px;justify-content:flex-start}#toast{bottom:24px}}
+@media(prefers-reduced-motion:no-preference){.card,.mode,.opt{transition:border-color .2s,background .2s}}
+</style></head><body>
+<div id="off" class="off" hidden>Oflayn rejim: saqlangan so‘zlar bilan ishlash mumkin, onlayn qidiruv ishlamaydi.</div>
+<main><div class="top"><svg width="40" height="40" viewBox="0 0 48 48" aria-label="LEXIMIND"><rect width="48" height="48" rx="12" fill="var(--ac)"/><path d="M10 16q7-3 14 1 7-4 14-1v18q-7-3-14 1-7-4-14-1zM24 17v18" fill="none" stroke="var(--on)" stroke-width="2.5" stroke-linejoin="round"/><path d="M28 21v7h5" fill="none" stroke="var(--gd)" stroke-width="3" stroke-linecap="round"/></svg><div><b>LEXIMIND</b><br><small>Learn. Remember. Master.</small></div></div><div id="app"></div></main>
+<nav><button data-a="go" data-v="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>Bosh sahifa</button><button data-a="go" data-v="search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>Qidiruv</button><button data-a="go" data-v="study"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM8 7h7"/></svg>Yodlash</button><button data-a="go" data-v="mine"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Lug‘atim</button><button data-a="go" data-v="set"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Sozlamalar</button></nav>
+<div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const MIN=6e4,DAY=864e5;let db,W=[],view="home",Q=[],cur=null,shown=false,res=null,rst=false,D={},mode="fc",prac=false,sess={ok:0,no:0,on:false,n:0},ans=null,opts=[],goal=+localStorage.lx_goal||10;
+try{D=JSON.parse(localStorage.lx_days||"{}")}catch(e){}
+const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*MIN).toISOString().slice(0,10);
+const toast=t=>{const e=$("#toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display="none",2600)};
+/* storage: IndexedDB */
+const open=()=>new Promise((ok,no)=>{const r=indexedDB.open("leximind",1);r.onupgradeneeded=()=>r.result.createObjectStore("words",{keyPath:"w"});r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});
+const tx=(m,f)=>new Promise((ok,no)=>{const t=db.transaction("words",m),r=f(t.objectStore("words"));t.oncomplete=()=>ok(r&&r.result);t.onerror=()=>no(t.error)});
+const put=w=>tx("readwrite",s=>s.put(w)),del=k=>tx("readwrite",s=>s.delete(k)),load=async()=>{W=await tx("readonly",s=>s.getAll())||[]};
+const mk=(w,tr,x={})=>({w:w.toLowerCase().trim(),tr,pos:x.pos||"",lvl:x.lvl||"",ipa:x.ipa||"",audio:x.audio||"",defs:x.defs||[],ex:x.ex||"",syn:x.syn||[],ant:x.ant||[],src:x.src||"qo‘lda",ef:2.5,rep:0,iv:0,due:Date.now(),ok:0,bad:0,hist:[],added:Date.now()});
+/* spaced repetition (SM-2 inspired) */
+function sched(w,q){const c={...w,hist:[...(w.hist||[])]};
+ if(q==0){c.rep=0;c.iv=0;c.ef=Math.max(1.3,c.ef-.2);c.bad++;c.due=Date.now()+10*MIN}
+ else{let iv;if(q==1){iv=c.rep?Math.max(1,Math.round(c.iv*1.2)):1;c.ef=Math.max(1.3,c.ef-.15)}
+  else if(q==2)iv=c.rep==0?1:c.rep==1?3:Math.round(c.iv*c.ef);
+  else{iv=c.rep==0?3:Math.round(Math.max(c.iv,1)*c.ef*1.3);c.ef+=.15}
+  iv=Math.min(iv,365);c.rep++;c.ok++;c.iv=iv;c.due=Date.now()+iv*DAY}
+ c.last=Date.now();c.hist.push([Date.now(),q]);c.hist=c.hist.slice(-50);return c}
+const fmt=ms=>ms<DAY?Math.max(1,Math.round(ms/MIN))+" daq":Math.round(ms/DAY)+" kun";
+const say=t=>{if(!("speechSynthesis" in window))return toast("Brauzer ovozni qo‘llamaydi");speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.speak(u)};
+const streak=()=>{let n=0,d=Date.now();if(!D[today()])d-=DAY;for(;;d-=DAY){const k=new Date(d-new Date().getTimezoneOffset()*MIN).toISOString().slice(0,10);if(D[k])n++;else break}return n};
+/* online dictionary */
+async function look(q){q=(q||"").trim().toLowerCase();if(!q)return;res={loading:1,q};draw();
+ try{const c=new AbortController();const t=setTimeout(()=>c.abort(),8000);
+  const r=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(q),{signal:c.signal});clearTimeout(t);
+  if(r.status==404){res={q,none:1};return draw()}if(!r.ok)throw 0;
+  const j=await r.json(),e=j[0],ph=e.phonetics||[],syn=new Set,ant=new Set,o={q,w:e.word.toLowerCase(),ipa:e.phonetic||(ph.find(p=>p.text)||{}).text||"",audio:(ph.find(p=>p.audio)||{}).audio||"",m:[],tr:""};
+  j.forEach(x=>(x.meanings||[]).forEach(m=>{(m.synonyms||[]).forEach(s=>syn.add(s));(m.antonyms||[]).forEach(s=>ant.add(s));(m.definitions||[]).slice(0,2).forEach(d=>o.m.push({p:m.partOfSpeech,d:d.definition,e:d.example||""}))}));
+  o.syn=[...syn].slice(0,8);o.ant=[...ant].slice(0,8);res=o;draw();
+  try{const r2=await fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(o.w)+"&langpair=en|uz"),j2=await r2.json(),t2=j2.responseData&&j2.responseData.translatedText;
+   if(t2&&t2.toLowerCase()!=o.w&&res===o){o.tr=t2;const i=$("#tr");if(i&&!i.value)i.value=t2}}catch(e){}
+ }catch(e){res={q,err:1};draw()}}
+function card(o){return`<div class="card"><div class="wh"><h3>${esc(o.w)}</h3><button class="btn" data-a="sayr">Eshitish</button></div><div class="mu">${esc(o.ipa)||"IPA topilmadi"}</div>`+
+ (o.m.length?o.m.map(m=>`<div class="def"><i>${esc(m.p)}</i> — ${esc(m.d)}${m.e?`<br><span class="mu">“${esc(m.e)}”</span>`:""}</div>`).join(""):'<p class="mu">Ta’rif topilmadi.</p>')+
+ `<p class="s"><b>Sinonim:</b> ${esc(o.syn.join(", "))||"—"}<br><b>Antonim:</b> ${esc(o.ant.join(", "))||"—"}</p>
+ <label class="s mu" for="tr">O‘zbekcha tarjima</label><input id="tr" value="${esc(o.tr)}" placeholder="Tarjimani kiriting">
+ <p class="s mu">Avto-tarjima (MyMemory) noaniq bo‘lishi mumkin — tekshirib oling.</p><button class="btn pri big" data-a="add">Lug‘atimga qo‘shish</button>
+ <p class="s mu">Manba: dictionaryapi.dev (Wiktionary asosida)</p></div>`}
+/* views */
+const VW={
+study(){if(!sess.on){if(!W.length)return`<h2>Yodlash</h2><div class="card"><p>Avval so‘z qo‘shing: Qidiruv bo‘limidan yoki boshlang‘ich so‘zlar bilan.</p><button class="btn pri" data-a="seed">20 ta boshlang‘ich so‘z</button></div>`;
+ const due=W.filter(w=>w.due<=Date.now()).length,err=W.filter(w=>w.bad>0).length;
+ return`<h2>Yodlash</h2><div class="card"><b>Mashq turi</b><div class="modes">${[["fc","Kartochka","Inglizcha → o‘zbekcha"],["mc","Test","4 ta variantdan tanlang"],["ty","Yozish","Tarjimani o‘zingiz yozing"],["ls","Eshitib yozish","So‘zni eshitib yozing"]].map(m=>`<button class="mode ${mode==m[0]?"on":""}" data-a="mode" data-v="${m[0]}"><b>${m[1]}</b><span>${m[2]}</span></button>`).join("")}</div></div><button class="btn pri big" data-a="go2" data-v="due">Takrorlash: ${due} ta so‘z</button><div class="row"><button class="btn" style="flex:1" data-a="go2" data-v="err">Xatolar (${err})</button><button class="btn" style="flex:1" data-a="go2" data-v="all">Erkin mashq</button></div><p class="s mu">Takrorlash jadvalga ta’sir qiladi. Erkin mashq jadvalni o‘zgartirmaydi.</p>`}
+ if(!cur)return`<div class="card fc"><h3>Seans tugadi</h3><p>To‘g‘ri: <b>${sess.ok}</b> · Xato: <b>${sess.no}</b></p></div><button class="btn pri big" data-a="end">Tamom</button>`;
+ if(mode=="fc")return VW.rev();
+ const w=cur,pct=Math.round(Math.max(0,sess.n-Q.length-1)/Math.max(1,sess.n)*100);let body;
+ if(mode=="mc")body=opts.map((o,i)=>`<button class="opt ${ans?(o==w.tr?"ok":i==ans.i?"no":""):""}" data-a="pick" data-v="${i}" ${ans?"disabled":""}>${esc(o)}</button>`).join("");
+ else body=`<input id="ty" ${ans?"disabled":""} placeholder="${mode=="ls"?"Inglizcha yozing":"O‘zbekcha tarjima"}" autocomplete="off" autocapitalize="none" value="${esc(ans?ans.v:"")}">`+(ans?"":`<button class="btn pri big" style="margin-top:8px" data-a="chk">Tekshirish</button>`);
+ const fb=ans?`<p class="fb ${ans.ok?"okt":"not"}">${ans.ok?"To‘g‘ri!":"To‘g‘ri javob: <b>"+esc(mode=="ls"?w.w:w.tr)+"</b>"}</p><button class="btn pri big" data-a="nxt">Keyingisi</button>`:"";
+ return`<div class="prog"><span style="width:${pct}%"></span></div><div class="card fc">${mode=="ls"?`<button class="btn pri" data-a="say" data-v="${esc(w.w)}">Qayta eshitish</button><p class="mu">Eshitgan so‘zingizni yozing</p>`:`<h3>${esc(w.w)}</h3><p class="mu">${esc(w.ipa)}</p><button class="btn" data-a="say" data-v="${esc(w.w)}">Eshitish</button>`}</div>${body}${fb}`},
+home(){const due=W.filter(w=>w.due<=Date.now()).length,ln=W.filter(w=>w.iv>=21).length,tot=W.reduce((a,w)=>a+w.ok+w.bad,0),ok=W.reduce((a,w)=>a+w.ok,0);
+ const days=[...Array(7)].map((_,i)=>{const d=Date.now()-(6-i)*DAY,k=new Date(d-new Date().getTimezoneOffset()*MIN).toISOString().slice(0,10);return[k.slice(5),D[k]||0]}),mx=Math.max(1,...days.map(x=>x[1]));
+ return`<div class="hero"><small>Bugungi maqsad</small><div class="n2">${D[today()]||0} / ${goal}</div><div class="prog"><span style="width:${Math.min(100,(D[today()]||0)/goal*100)}%"></span></div><b>Salom! Bugun nechta so‘zni yodlaymiz?</b></div>`+(W.length?`<button class="btn pri big" data-a="go" data-v="study">Yodlashni boshlash: ${due} ta so‘z</button>`:`<div class="card"><p>Lug‘atingiz bo‘sh. Qidiruvdan so‘z qo‘shing yoki 20 ta boshlang‘ich so‘zni yuklang.</p><button class="btn pri" data-a="seed">Boshlang‘ich so‘zlarni qo‘shish</button></div>`)+
+ `<div class="grid" style="margin-top:12px"><div class="card"><div class="n">${W.length}</div>Jami so‘z</div><div class="card"><div class="n">${ln}</div>O‘zlashtirilgan<br><span class="s mu">interval 21+ kun</span></div><div class="card"><div class="n">${streak()}</div>Kunlik seriya</div><div class="card"><div class="n">${tot?Math.round(ok/tot*100)+"%":"—"}</div>To‘g‘ri javoblar</div></div>
+ <div class="card"><b>Oxirgi 7 kun (takrorlar)</b><div class="bars">${days.map(d=>`<div><span style="height:${d[1]/mx*70}px"></span>${d[1]}<br>${d[0]}</div>`).join("")}</div></div>`},
+search(){return`<h2>Lug‘at qidiruvi</h2><div class="row"><input id="q" placeholder="Inglizcha so‘z…" autocapitalize="none" value="${esc(res&&res.q||"")}"><button class="btn pri" data-a="look">Qidirish</button></div>`+
+ (!res?'<p class="mu">Istalgan inglizcha so‘zni onlayn qidiring. Qo‘shilgan so‘zlar oflayn ishlaydi.</p>':res.loading?'<p class="mu">Yuklanmoqda…</p>':res.none?`<p>«${esc(res.q)}» topilmadi. Imloni tekshiring yoki Lug‘atim bo‘limida qo‘lda qo‘shing.</p>`:res.err?`<p>Ulanib bo‘lmadi: internet yoki manba cheklovi. Qayta urinib ko‘ring.</p><button class="btn" data-a="look" data-v="${esc(res.q)}">Qayta urinish</button>`:card(res))},
+rev(){if(!cur)return`<h2>Takrorlash</h2><div class="card"><p>${W.length?"Hozircha takrorlanadigan so‘z yo‘q. Keyingi takror vaqtini Lug‘atim bo‘limida ko‘ring.":"Avval so‘z qo‘shing."}</p></div>`+(Q.length?"":`<button class="btn pri" data-a="start">Seansni boshlash</button>`);
+ const w=cur;return`<h2>Takrorlash <small class="mu">(${Q.length+1} qoldi)</small></h2><div class="card fc"><h3>${esc(w.w)}</h3><p class="mu">${esc(w.ipa)}</p><button class="btn" data-a="say" data-v="${esc(w.w)}">Eshitish</button>`+
+ (shown?`<h2 style="margin-top:24px;color:var(--ac)">${esc(w.tr)}</h2>${w.ex?`<p class="mu">“${esc(w.ex)}”</p>`:w.defs[0]?`<p class="mu">${esc(w.defs[0])}</p>`:""}`:"")+`</div>`+
+ (shown?`<div class="rate">${["Qaytadan","Qiyin","Yaxshi","Oson"].map((n,i)=>`<button class="btn" data-a="rate" data-v="${i}">${n}<small>${fmt(sched(w,i).due-Date.now())}</small></button>`).join("")}</div>`:`<button class="btn pri big" data-a="show">Javobni ko‘rsatish</button>`)},
+mine(){return`<h2>Lug‘atim <small class="mu">(${W.length})</small></h2><div class="row"><input id="f" placeholder="Qidirish…"><button class="btn" data-a="manual">Qo‘lda qo‘shish</button></div>${W.length?"":'<button class="btn pri" data-a="seed">20 ta boshlang‘ich so‘z</button>'}<div id="list"></div>`},
+set(){const t=localStorage.lx_theme||"system";return`<h2>Sozlamalar</h2><div class="card"><b>Mavzu</b><div class="row wrap">${["system","light","dark"].map(x=>`<button class="btn ${t==x?"pri":""}" data-a="theme" data-v="${x}">${{system:"Tizim",light:"Yorug‘",dark:"Qorong‘i"}[x]}</button>`).join("")}</div></div>
+ <div class="card"><b>Kunlik maqsad</b><div class="row wrap">${[5,10,20,50].map(n=>`<button class="btn ${goal==n?"pri":""}" data-a="goal" data-v="${n}">${n}</button>`).join("")}</div><p class="s mu">Kuniga nechta takror. Bosh sahifada ko‘rinadi.</p></div>
+ <div class="card"><b>Zaxira nusxa (JSON)</b><p class="s mu">“Zaxira yaratish” matnni quyiga chiqaradi. Tiklash uchun JSON’ni shu maydonga joylab, “Tiklash”ni bosing. Mavjud so‘zlar o‘zgartirilmaydi.</p><textarea id="bk" rows="5"></textarea><div class="row wrap"><button class="btn" data-a="bkmk">Zaxira yaratish</button><button class="btn" data-a="bkcopy">Nusxalash</button><button class="btn pri" data-a="bkrest">Tiklash</button></div></div>
+ <div class="card"><b>Barcha ma’lumotni o‘chirish</b><p class="s mu">Barcha so‘z va progress o‘chadi. Avval zaxira oling.</p><button class="btn dn" data-a="reset">${rst?"Aniq o‘chirilsinmi? Yana bosing":"Ilovani tozalash"}</button></div>
+ <p class="s mu">Hozircha: ${W.length} ta so‘z, IndexedDB’da saqlanadi. Reklama yo‘q, ro‘yxatdan o‘tish shart emas.</p>`}};
+function list(){const f=($("#f")||{}).value||"",q=f.toLowerCase(),a=W.filter(w=>!q||w.w.includes(q)||w.tr.toLowerCase().includes(q)).sort((x,y)=>x.w.localeCompare(y.w));
+ $("#list").innerHTML=a.map(w=>`<div class="it"><div><b>${esc(w.w)}</b> — ${esc(w.tr)}<br><span class="s mu">${w.lvl?esc(w.lvl)+" · ":""}keyingi takror: ${w.due<=Date.now()?"hozir":fmt(w.due-Date.now())+" dan keyin"}</span></div><div class="row"><button class="btn" data-a="edit" data-v="${esc(w.w)}">Tahrir</button><button class="btn dn" data-a="del" data-v="${esc(w.w)}">O‘chirish</button></div></div>`).join("")||'<p class="mu">Hech narsa topilmadi.</p>'}
+function draw(){$("#app").innerHTML=VW[view]();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v==view));if(view=="mine")list();const t=$("#ty");if(t&&!ans)t.focus()}
+const shuf=a=>[...a].sort(()=>Math.random()-.5);
+const mkopts=w=>shuf([w.tr,...shuf(W.filter(x=>x.w!=w.w&&x.tr!=w.tr).map(x=>x.tr)).slice(0,3)]);
+function next(){cur=Q.shift()||null;shown=false;ans=null;opts=cur&&mode=="mc"?mkopts(cur):[];if(cur&&mode=="ls")say(cur.w)}
+async function grade(q){const c=prac?cur:sched(cur,q);sess[q>0?"ok":"no"]++;if(q==0)Q.push(c);D[today()]=(D[today()]||0)+1;try{localStorage.lx_days=JSON.stringify(D)}catch(e){}
+ if(!prac){try{await put(c);W=W.map(w=>w.w==c.w?c:w)}catch(e){toast("Saqlab bo‘lmadi")}}}
+const SEED="achieve|erishmoq|verb|B1|She worked hard to achieve her goal.;borrow|qarz olmoq|verb|A2|Can I borrow your pen?;careful|ehtiyotkor|adjective|A2|Be careful on the stairs.;decide|qaror qilmoq|verb|A2|I need to decide today.;environment|atrof-muhit|noun|B1|We must protect the environment.;familiar|tanish|adjective|B2|Her face looks familiar.;growth|o‘sish|noun|B1|The company’s growth is fast.;improve|yaxshilamoq|verb|A2|I want to improve my English.;journey|sayohat|noun|B1|The journey took three hours.;knowledge|bilim|noun|B1|Knowledge is power.;lend|qarz bermoq|verb|B1|Can you lend me some money?;manage|uddalamoq, boshqarmoq|verb|B1|She manages a small team.;notice|payqamoq|verb|B1|Did you notice the change?;opportunity|imkoniyat|noun|B1|This is a great opportunity.;purpose|maqsad|noun|B1|What is the purpose of this trip?;reliable|ishonchli|adjective|B2|He is a reliable friend.;suggest|taklif qilmoq|verb|B1|I suggest we leave early.;tend|moyil bo‘lmoq|verb|B2|People tend to forget names.;useful|foydali|adjective|A2|This app is very useful.;variety|xilma-xillik|noun|B2|The shop sells a variety of fruit.";
+const act={
+mode(v){mode=v;draw()},goal(v){goal=+v;localStorage.lx_goal=v;draw()},nxt(){next();draw()},end(){sess.on=false;cur=null;Q=[];draw()},
+go2(v){let q=[];prac=false;if(v=="due")q=W.filter(w=>w.due<=Date.now()).sort((a,b)=>a.due-b.due);else if(v=="err")q=W.filter(w=>w.bad>0).sort((a,b)=>b.bad-a.bad).slice(0,20);else{prac=true;q=shuf(W).slice(0,20)}
+ if(mode=="mc"&&W.length<4){mode="fc";toast("Test uchun kamida 4 ta so‘z kerak")}
+ if(!q.length)return toast("Bu bo‘limda so‘z yo‘q");Q=q;sess={ok:0,no:0,on:true,n:q.length};next();draw()},
+pick(i){if(ans)return;const ok=opts[i]==cur.tr;ans={i:+i,ok};grade(ok?2:0);draw()},
+chk(){if(ans)return;const v=($("#ty").value||"").trim();if(!v)return;const n=s=>s.toLowerCase().replace(/[ʻ'‘’`]/g,"").replace(/\s+/g," ").trim();const ok=(mode=="ls"?[cur.w]:cur.tr.split(/[,;]/)).some(e=>n(e)==n(v));ans={v,ok};grade(ok?2:0);draw()},
+go(v){view=v;if(v=="rev"&&!cur&&!Q.length){Q=W.filter(w=>w.due<=Date.now()).sort((a,b)=>a.due-b.due);next()}draw()},
+look(v){look(v||$("#q").value)},say(v){say(v)},sayr(){res.audio?new Audio(res.audio).play().catch(()=>say(res.w)):say(res.w)},
+async add(){const tr=$("#tr").value.trim();if(!tr)return toast("Avval tarjimani kiriting");if(W.find(w=>w.w==res.w))return toast("Bu so‘z allaqachon lug‘atingizda bor");
+ const w=mk(res.w,tr,{ipa:res.ipa,audio:res.audio,defs:res.m.map(m=>m.d).slice(0,3),ex:(res.m.find(m=>m.e)||{}).e,pos:res.m[0]&&res.m[0].p,syn:res.syn,ant:res.ant,src:"dictionaryapi.dev"});
+ try{await put(w);W.push(w);toast("Qo‘shildi. Oflayn ham ishlaydi.")}catch(e){toast("Saqlab bo‘lmadi")}},
+start(){act.go("rev")},show(){shown=true;draw()},
+async rate(q){await grade(+q);next();draw()},
+async seed(){let n=0;for(const r of SEED.split(";")){const[w,tr,pos,lvl,ex]=r.split("|");if(!W.find(x=>x.w==w)){const c=mk(w,tr,{pos,lvl,ex,src:"boshlang‘ich"});await put(c);W.push(c);n++}}toast(n+" ta so‘z qo‘shildi");draw()},
+async manual(){const w=(prompt("Inglizcha so‘z")||"").trim();if(!w)return;if(W.find(x=>x.w==w.toLowerCase()))return toast("Bu so‘z bor");const t=(prompt("O‘zbekcha tarjima")||"").trim();if(!t)return;const c=mk(w,t);await put(c);W.push(c);draw()},
+async edit(k){const w=W.find(x=>x.w==k),t=prompt("Tarjima",w.tr);if(t&&t.trim()){w.tr=t.trim();await put(w);list()}},
+async del(k){if(!confirm("«"+k+"» o‘chirilsinmi?"))return;await del(k);W=W.filter(w=>w.w!=k);cur=null;Q=[];draw()},
+theme(v){localStorage.lx_theme=v;applyTheme();draw()},
+bkmk(){$("#bk").value=JSON.stringify({app:"leximind",v:1,words:W})},
+bkcopy(){navigator.clipboard.writeText($("#bk").value).then(()=>toast("Nusxalandi"),()=>toast("Matnni qo‘lda belgilab nusxalang"))},
+async bkrest(){try{const j=JSON.parse($("#bk").value);if(!j||j.app!="leximind"||!Array.isArray(j.words))throw 0;let n=0;
+ for(const x of j.words){if(!x||typeof x.w!="string"||typeof x.tr!="string"||W.find(w=>w.w==x.w.toLowerCase()))continue;const c={...mk(x.w,x.tr),...x,w:x.w.toLowerCase()};await put(c);W.push(c);n++}toast(n+" ta so‘z tiklandi")}catch(e){toast("JSON noto‘g‘ri yoki LEXIMIND zaxirasi emas")}},
+async reset(){if(!rst){rst=true;draw();return}for(const w of W)await del(w.w);W=[];D={};localStorage.removeItem("lx_days");cur=null;Q=[];rst=false;toast("Tozalandi");draw()}};
+function applyTheme(){const t=localStorage.lx_theme;t&&t!="system"?document.documentElement.dataset.theme=t:delete document.documentElement.dataset.theme}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(b)act[b.dataset.a](b.dataset.v)});
+document.addEventListener("input",e=>{if(e.target.id=="f")list()});
+document.addEventListener("keydown",e=>{if(e.key=="Enter"&&e.target.id=="q")act.look();if(e.key=="Enter"&&e.target.id=="ty")act.chk()});
+const net=()=>$("#off").hidden=navigator.onLine;addEventListener("online",net);addEventListener("offline",net);net();applyTheme();
+(async()=>{try{db=await open();await load()}catch(e){toast("Brauzer xotirasi mavjud emas: ma’lumot saqlanmaydi");db={transaction:()=>{throw 0}}}draw()})();
+</script></body></html>
